@@ -1,0 +1,26 @@
+group 'minor.zzz'
+version '0.1.1'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+compileJava.options.encoding = 'utf-8'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+//uploadArchives {
+//    repositories {
+//        mavenDeployer {
+//            repository(url: uri('../repo'))
+//        }
+//    }
+//}
+
+dependencies {
+
+    compile group: 'org.mongodb', name: 'mongodb-driver', version: '3.2.2'
+}
