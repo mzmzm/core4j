@@ -45,6 +45,27 @@ public class ReportTable {
 
         private List<Head> children = new ArrayList<Head>();        // 子表头
 
+        public Head() {
+            this(StringUtils.EMPTY, StringUtils.EMPTY);
+        }
+
+        public Head(String field, String name) {
+            this(field, name, new ArrayList<Head>());
+        }
+
+        public Head(String field, String name, List<Head> children) {
+            this.field = field;
+            this.name = name;
+
+            if (CollectionUtils.isEmpty(children)) {
+                this.children = new ArrayList<>();
+            } else {
+                for (Head child : children) {
+                    this.addChild(child);
+                }
+            }
+        }
+
         public boolean isGroup() {
             return !CollectionUtils.isEmpty(children);
         }
@@ -503,48 +524,30 @@ public class ReportTable {
     }
 
     public static void main(String[] args) {
-        Head h = new Head();
-        h.field = "h";
-        h.name = "h";
+        Head h = new Head("h", "h");
 
-        Head sh = new Head();
-        sh.field = "sh";
-        sh.name = "sh";
+        Head sh = new Head("sh", "sh");
 
-        Head ssh = new Head();
-        ssh.field = "ssh";
-        ssh.name = "ssh";
+        Head ssh = new Head("ssh", "ssh");
 
-        Head ssh2 = new Head();
-        ssh2.field = "ssh2";
-        ssh2.name = "ssh2";
+        Head ssh2 = new Head("ssh2", "ssh2");
 
         sh.addChild(ssh);
         sh.addChild(ssh2);
 
-        Head sh2 = new Head();
-        sh2.field = "sh2";
-        sh2.name = "sh2";
-        Head sh3= new Head();
-        sh3.field = "sh3";
-        sh3.name = "sh3";
+        Head sh2 = new Head("sh2", "sh2");
+
+        Head sh3= new Head("sh3", "sh3");
 
         h.addChild(sh);
         h.addChild(sh2);
         h.addChild(sh3);
 
-        Head j = new Head();
-        j.field = "j";
-        j.name = "j";
+        Head j = new Head("j", "j");
 
-        Head sj = new Head();
-        sj.field = "sj";
-        sj.name = "sj";
+        Head sj = new Head("sj", "sj");
 
-        Head sj2 = new Head();
-        sj2.field = "sj2";
-        sj2.name = "sj2";
-
+        Head sj2 = new Head("sj2", "sj2");
 
         j.addChild(sj);
         j.addChild(sj2);
